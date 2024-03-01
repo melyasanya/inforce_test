@@ -10,7 +10,7 @@ export const fetchProducts = createAsyncThunk<
 >("products/fetch", async (_, thunkAPI) => {
   try {
     const response = await axios.get<Product[]>(
-      "http://localhost:3000/product"
+      "https://fake-server-iota.vercel.app/product"
     );
     return response.data;
   } catch (e: any) {
@@ -25,7 +25,7 @@ export const addProduct = createAsyncThunk<
 >("products/add", async (newProduct, thunkAPI) => {
   try {
     const response = await axios.post<Product>(
-      "http://localhost:3000/product",
+      "https://fake-server-iota.vercel.app/product",
       newProduct
     );
     return response.data;
@@ -40,7 +40,9 @@ export const deleteProduct = createAsyncThunk<
   { rejectValue: string }
 >("products/delete", async (productId, thunkAPI) => {
   try {
-    await axios.delete(`http://localhost:3000/product/${productId}`);
+    await axios.delete(
+      `https://fake-server-iota.vercel.app/product/${productId}`
+    );
   } catch (e: any) {
     return thunkAPI.rejectWithValue(e.message);
   }
