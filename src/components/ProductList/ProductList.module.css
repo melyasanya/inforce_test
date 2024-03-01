@@ -2,5 +2,23 @@
   margin: 20px;
   border: 1px black solid;
   width: 200px;
-  height: 200px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.productImage {
+  width: 200px;
+  height: 150px;
+}
+
+.btnGroup {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list {
+  display: flex;
 }
