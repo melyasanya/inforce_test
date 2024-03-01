@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+import css from "./ProductList.module.css";
 
 export const ProductList = () => {
   const { products } = useSelector((state: RootState) => state.products);
@@ -8,7 +9,7 @@ export const ProductList = () => {
     <>
       {products.map((el) => {
         return (
-          <div key={el.id}>
+          <div key={el.id} className={css.card}>
             <img src={el.imageUrl} alt="" />
             <p>{el.name}</p>
             <div>
