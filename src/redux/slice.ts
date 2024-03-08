@@ -1,10 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { addProduct, deleteProduct, fetchProducts } from "./operations";
+import {
+  addComment,
+  addProduct,
+  deleteComment,
+  deleteProduct,
+  editProduct,
+  fetchProducts,
+} from "./operations";
 import { ProductsState } from "../interface/products";
 import {
+  handleAddCommentFulfilled,
   handleAddFulfilled,
+  handleDeleteCommentFulfilled,
   handleDeleteFulfilled,
+  handleEditProductFulfilled,
   handleFetchFulfilled,
   handlePending,
   handleRejected,
@@ -14,6 +24,7 @@ const initialState: ProductsState = {
   products: [],
   isLoading: false,
   error: "",
+  sortingOption: "name",
 };
 
 const productsSlice = createSlice({
@@ -30,7 +41,16 @@ const productsSlice = createSlice({
       .addCase(addProduct.rejected, handleRejected)
       .addCase(deleteProduct.pending, handlePending)
       .addCase(deleteProduct.fulfilled, handleDeleteFulfilled)
-      .addCase(deleteProduct.rejected, handleRejected);
+      .addCase(deleteProduct.rejected, handleRejected)
+      .addCase(deleteComment.pending, handlePending)
+      .addCase(deleteComment.fulfilled, handleDeleteCommentFulfilled)
+      .addCase(deleteComment.rejected, handleRejected)
+      .addCase(addComment.pending, handlePending)
+      .addCase(addComment.fulfilled, handleAddCommentFulfilled)
+      .addCase(addComment.rejected, handleRejected)
+      .addCase(editProduct.pending, handlePending)
+      .addCase(editProduct.fulfilled, handleEditProductFulfilled)
+      .addCase(editProduct.rejected, handleRejected);
   },
 });
 

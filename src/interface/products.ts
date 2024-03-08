@@ -4,8 +4,8 @@ interface Size {
 }
 
 interface Comment {
-  id: number;
-  productId: number;
+  id: string;
+  productId: string;
   description: string;
   date: string;
 }
@@ -24,4 +24,28 @@ export interface ProductsState {
   products: Product[];
   isLoading: boolean;
   error: string;
+  sortingOption: string;
+}
+
+export interface DeleteCommentPayload {
+  productId: string;
+  commentId: string;
+}
+
+export interface AddCommentPayload {
+  productId: string;
+  comment: Comment;
+}
+
+interface ProductToEdit {
+  imageUrl: string;
+  name: string;
+  count: number;
+  size: Size;
+  weight: string;
+}
+
+export interface EditProduct {
+  id: string;
+  formData: ProductToEdit;
 }
